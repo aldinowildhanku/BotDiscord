@@ -97,4 +97,22 @@ Client.on("messageUpdate", async(oldMessage,newMessage)=>{
     loggingChannel.send(logEmbed)
 })
 
-//command Instagram
+//command massage DM
+Client.on("message",message=>{
+    
+    msg = message.content.toLowerCase()
+    if(message.author.bot)
+    return
+
+    mention = message.mentions.users.first()
+
+    if(msg.startsWith(prefix2 + "dm")){
+        if(mention == null){
+            return
+        }
+        message.delete()
+        mentionMessage = message.content.size(8)
+        mention.send(mentionMessage)
+        message.channel.send("Terkirim")
+    }
+})
