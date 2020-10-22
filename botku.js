@@ -97,6 +97,24 @@ Client.on("messageUpdate", async(oldMessage,newMessage)=>{
     loggingChannel.send(logEmbed)
 })
 
+// LOG DELETE
+Client.on('messageDelete',async message=>{
+  
+   
+            const deleteEmbed = new Discord.MessageEmbed()
+                .setAuthor(message.author.tag, message.author.displayAvatarURL({format: "gif",format : "png", dynamic : "true"}))
+                .setColor("RANDOM")
+                .setDescription(`Pesan Baru Saja Dihapus Di Channel  ${ message.channel.name}`)
+                .addField("Pesan yang telah dihapus", message.content,true )
+                .setTimestamp()
+                .setFooter('©!Mas Din#6666 • Version 2.0')
+                let deletelog = message.guild.channels.cache.get("745263230976262175")
+                if(!deletelog) return
+                
+                deletelog.send(deleteEmbed)
+
+})
+
 //command massage DM
 Client.on("message",message=>{
     
